@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add New Product</h2>
+    <input type="text" id="name" placeholder="Product Name" required>
+    <input type="number" id="price" placeholder="Price" step="0.01" required>
+    <input type="file" id="image" accept="image/png, image/jpeg, image/jpg" required>
+
+    <button onclick="submitProduct()">Upload Product</button>
+
+    <a href="products.html">View All Products</a>
+</div>
+
+<script>
+async function submitProduct() {
+    const name = document.getElementById("name").value;
+    const price = document.getElementById("price").value;
+    const imageFile = document.getElementById("image").files[0];
+
+    if (!name || !price || !imageFile) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    const product = { name, price };
+    const formData = new FormData();
+    formData.append("product", new Blob([JSON.stringify(product)], { type: "application/json" }));
+    formData.append("image", imageFile);
+
+    try {
+        const response = await fetch("http://localhost:8080/products/save", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert("Product uploaded successfully!");
+            // Reset form
+            document.getElementById("name").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("image").value = "";
+        } else {
+            alert(result.message || "Error uploading product");
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Server error");
+    }
+}
+</script>
+
+</body>
+</html>
