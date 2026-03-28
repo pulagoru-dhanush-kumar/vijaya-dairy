@@ -1,0 +1,7 @@
+target/
+src/main/resources/application.properties
+.classpath
+.project
+.factorypath
+.settings/
+src/main/resources/static_backup_*/
