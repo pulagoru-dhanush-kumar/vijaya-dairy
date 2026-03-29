@@ -12,7 +12,7 @@
 ![Environments](https://img.shields.io/badge/Environments-3%20(Local%20|%20Staging%20|%20Production)-blue?style=flat-square)
 ![Endpoints](https://img.shields.io/badge/API%20Endpoints-25%2B-purple?style=flat-square)
 
-**[🌐 Live Demo](https://tinyurl.com/messiah-vijaya-dairy-pulagoru) · [🛡️ Admin Panel](https://tinyurl.com/messiah-vijaya-dairy-pulagoru/adminpanel.html) · [📁 Source Code](https://github.com/pulagoru-dhanush-kumar/vijaya-dairy)**
+**[🌐 Live Demo](https://tinyurl.com/messiah-vijaya-dairy-pulagoru) · [🛡️ Admin Panel](http://3.107.228.182:8081/adminpanel.html) · [📁 Source Code](https://github.com/pulagoru-dhanush-kumar/vijaya-dairy)**
 
 </div>
 
