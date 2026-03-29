@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Messiah Vijaya Dairy</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/payment.css">
+<link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<header>
+  <a class="logo" href="products.html">
+    <div class="logo-icon">🕊️</div>
+    <div class="logo-text">
+      <span>Messiah Vijaya Dairy</span>
+      <span>Fresh · Pure · Trusted</span>
+    </div>
+  </a>
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="products.html" class="icon-btn" title="Back to products">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+  </div>
+</header>
+
+<section class="checkout-hero">
+  <div class="checkout-hero-text">
+    <h1>Your Order, Ready to Pay 💳</h1>
+    <p>Secure checkout with Razorpay — Fast, safe, and trusted by thousands</p>
+  </div>
+</section>
+
+<div class="checkout-container">
+  <div class="checkout-content">
+    <!-- CART SUMMARY SECTION -->
+    <div class="checkout-section">
+      <h2>📦 Order Summary</h2>
+      <div id="checkoutItems" class="checkout-items">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading your cart...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERY SECTION -->
+    <div class="checkout-section">
+      <h2>🚚 Delivery Details</h2>
+      <div class="delivery-info">
+        <div class="delivery-option">
+          <input type="radio" id="delivery-5km" name="delivery" value="free" checked>
+          <label for="delivery-5km">
+            <span class="delivery-label">Free Delivery</span>
+            <span class="delivery-desc">Within 5 km radius</span>
+            <span class="delivery-price">₹0</span>
+          </label>
+        </div>
+        <div class="delivery-option">
+          <input type="radio" id="delivery-beyond" name="delivery" value="paid">
+          <label for="delivery-beyond">
+            <span class="delivery-label">Standard Delivery</span>
+            <span class="delivery-desc">Beyond 5 km (₹50)</span>
+            <span class="delivery-price">₹50</span>
+          </label>
+        </div>
+        <input type="text" id="deliveryAddress" placeholder="Enter delivery address..." class="address-input">
+      </div>
+    </div>
+
+    <!-- COUPON SECTION -->
+    <div class="checkout-section">
+      <h2>🎟️ Apply Coupon (Optional)</h2>
+      <div class="coupon-box">
+        <input type="text" id="couponCode" placeholder="Enter coupon code" maxlength="20" class="coupon-input">
+        <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
+      </div>
+      <div id="couponMessage" style="display:none;margin-top:10px;padding:10px;border-radius:8px;font-size:0.85rem;font-weight:500"></div>
+    </div>
+  </div>
+
+  <!-- PAYMENT SIDEBAR -->
+  <div class="checkout-sidebar">
+    <div class="payment-summary">
+      <h3>Payment Summary</h3>
+      
+      <div class="summary-item">
+        <span>Subtotal</span>
+        <span>₹<span id="summarySubtotal">0</span></span>
+      </div>
+
+      <div class="summary-item" id="summaryDeliveryRow">
+        <span>Delivery</span>
+        <span class="delivery-tag">FREE</span>
+      </div>
+
+      <div class="summary-item" id="summaryDiscountRow" style="display:none">
+        <span>Discount</span>
+        <span class="discount-tag">-₹<span id="summaryDiscount">0</span></span>
+      </div>
+
+      <div class="summary-divider"></div>
+
+      <div class="summary-total">
+        <span>Total Amount</span>
+        <span class="total-amount">₹<span id="summaryTotal">0</span></span>
+      </div>
+
+      <!-- PRICE BREAKDOWN -->
+      <div class="price-breakdown">
+        <details>
+          <summary>View Breakdown</summary>
+          <div class="breakdown-content">
+            <div class="breakdown-row">
+              <span>Subtotal</span>
+              <span>₹<span id="breakdownSubtotal">0</span></span>
+            </div>
+            <div class="breakdown-row">
+              <span>Delivery</span>
+              <span id="breakdownDelivery">₹0</span>
+            </div>
+            <div class="breakdown-row" id="breakdownDiscountRow" style="display:none">
+              <span>Coupon Discount</span>
+              <span class="discount-text">-₹<span id="breakdownDiscount">0</span></span>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <span>TOTAL</span>
+              <span>₹<span id="breakdownTotal">0</span></span>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- PAYMENT METHOD -->
+      <div class="payment-method">
+        <div class="method-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>Secured by Razorpay</span>
+        </div>
+        <p class="method-desc">Bank transfers, cards, UPI, and wallets accepted</p>
+      </div>
+
+      <!-- PAYMENT BUTTON -->
+      <button id="paymentBtn" class="payment-btn" onclick="handlePaymentClick()">
+        <span id="paymentBtnText">Proceed to Payment</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+
+      <!-- PAYMENT INFO -->
+      <div class="payment-info">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <span>Your payment is 100% secure and encrypted</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RAZORPAY PAYMENT MODAL -->
+<div id="paymentModal" class="payment-modal-overlay">
+  <div class="payment-modal">
+    <button class="modal-close" onclick="closePaymentModal()">✕</button>
+    <div class="payment-modal-header">
+      <h2>Complete Payment</h2>
+      <p>₹<span id="modalAmount">0</span></p>
+    </div>
+
+    <div id="paymentModalContent">
+      <div class="payment-loading">
+        <div class="spinner"></div>
+        <p>Initializing secure payment...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER CONFIRMATION MODAL -->
+<div id="confirmationModal" class="confirmation-modal-overlay">
+  <div class="confirmation-modal">
+    <div class="confirmation-icon" id="confirmationIcon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="success-icon">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+    </div>
+    <h2 id="confirmationTitle">Payment Successful! 🎉</h2>
+    <p id="confirmationMessage">Your order has been placed and will be delivered soon.</p>
+    
+    <div class="confirmation-details" id="confirmationDetails"></div>
+
+    <button class="confirmation-btn" onclick="redirectToOrders()">View Order Details</button>
+    <button class="confirmation-btn secondary" onclick="backToProducts()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">🕊️ Messiah Vijaya Dairy</div>
+      <p>An authorized Vijaya Dairy outlet. Delivering freshness, purity, and reliability to every household we serve.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 +91 6304773400</p>
+      <p>📧 mesiahdairy@gmail.com</p>
+      <p>📍 Kotha Majeru</p>
+    </div>
+    <div class="footer-col">
+      <h4>Delivery</h4>
+      <ul>
+        <li>✅ Free within 5 km</li>
+        <li>🚚 Charges beyond 5 km</li>
+        <li>📦 Bulk orders welcome</li>
+        <li>⏱ Daily fresh delivery</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Messiah Vijaya Dairy · All rights reserved</span>
+    <span>Freshness you can trust 🥛</span>
+  </div>
+</footer>
+
+<style id="darkStyles"></style>
+
+<!-- SCRIPTS -->
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/payment.js"></script>
+<script>
+  // Initialize checkout page
+  window.addEventListener('load', () => {
+    applyStoredTheme();
+    loadCheckout();
+  });
+
+  function loadCheckout() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      showToast('Please sign in to checkout', 'error');
+      setTimeout(() => window.location.href = 'products.html', 1500);
+      return;
+    }
+    loadCheckoutCart();
+  }
+</script>
+</body>
+</html>

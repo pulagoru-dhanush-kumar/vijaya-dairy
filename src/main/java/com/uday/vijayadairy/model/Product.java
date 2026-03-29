@@ -8,6 +8,8 @@ import org.aspectj.apache.bcel.util.ByteSequence;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -48,6 +50,7 @@ public class Product {
 	Float price;
 	
 	@ManyToMany(mappedBy = "products")
+	@JsonIgnore
     List<Order> orders;
 	@NotNull(message ="image url should not be empty")
 	

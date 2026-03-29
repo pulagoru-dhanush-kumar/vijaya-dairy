@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messiah Vijaya Dairy | Premium Milk Products</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1a7a3c;
+  --green-mid: #22963f;
+  --green-light: #e8f5ed;
+  --green-glow: rgba(34,150,63,0.15);
+  --cream: #faf7f2;
+  --cream-dark: #f2ede4;
+  --white: #ffffff;
+  --text: #1c2b1e;
+  --text-mid: #3d5142;
+  --text-muted: #7a9082;
+  --border: #d4e2d8;
+  --shadow-sm: 0 2px 8px rgba(26,122,60,0.08);
+  --shadow-md: 0 8px 28px rgba(26,122,60,0.13);
+  --shadow-lg: 0 20px 60px rgba(26,122,60,0.18);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xl: 24px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:1000;background:rgba(250,247,242,0.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:38px;height:38px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 4px 12px rgba(26,122,60,0.3);flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text span:first-child{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;color:var(--green);letter-spacing:-0.02em}
+.logo-text span:last-child{font-size:0.65rem;color:var(--text-muted);font-weight:500;letter-spacing:0.04em;text-transform:uppercase}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.icon-btn{background:var(--white);border:1px solid var(--border);width:40px;height:40px;border-radius:var(--radius-sm);cursor:pointer;color:var(--text);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s;position:relative}
+.icon-btn:hover{background:var(--green-light);border-color:var(--green);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.cart-badge{position:absolute;top:-6px;right:-6px;background:#ef4444;color:white;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--cream);transition:transform 0.2s}
+.cart-badge.pop{animation:badgePop 0.35s cubic-bezier(0.36,0.07,0.19,0.97)}
+@keyframes badgePop{0%,100%{transform:scale(1)}40%{transform:scale(1.5)}70%{transform:scale(0.85)}}
+.btn-primary{background:var(--green);color:white;border:none;padding:0 18px;height:40px;border-radius:var(--radius-sm);font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-primary:hover{background:var(--green-mid);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,122,60,0.3)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--green) 0%,#2d9e52 100%);padding:48px 5% 52px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:rgba(255,255,255,0.06);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-80px;left:10%;width:200px;height:200px;background:rgba(255,255,255,0.04);border-radius:50%}
+.hero-text{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.18);color:white;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.25)}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3rem);color:white;line-height:1.1;font-weight:900;margin-bottom:12px;letter-spacing:-0.03em}
+.hero h1 em{font-style:italic;color:#a8f5be}
+.hero p{color:rgba(255,255,255,0.82);font-size:1rem;max-width:380px;line-height:1.6}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.hero-pill{background:rgba(255,255,255,0.15);color:white;font-size:0.8rem;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.2)}
+.hero-emoji{font-size:5rem;position:relative;z-index:1;animation:float 3s ease-in-out infinite;flex-shrink:0}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* CATEGORIES */
+.categories-bar{max-width:1200px;margin:28px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap}
+.cat-pill{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--text-mid);font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.cat-pill:hover,.cat-pill.active{background:var(--green);border-color:var(--green);color:white;box-shadow:0 4px 12px rgba(26,122,60,0.25);transform:translateY(-1px)}
+
+/* FILTER BAR */
+.filter-bar{max-width:1200px;margin:16px auto 0;padding:0 20px;display:flex;gap:10px;align-items:center}
+.search-wrap{flex:1;position:relative}
+.search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);width:17px;height:17px;pointer-events:none}
+#search{width:100%;padding:12px 16px 12px 42px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--white);color:var(--text);font-size:0.95rem;font-family:'DM Sans',sans-serif;transition:all 0.2s;box-shadow:var(--shadow-sm)}
+#search:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-glow)}
+#sort{padding:12px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--white);color:var(--text);font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.88rem;cursor:pointer;box-shadow:var(--shadow-sm);transition:border-color 0.2s}
+#sort:focus{outline:none;border-color:var(--green)}
+.results-label{max-width:1200px;margin:14px auto 0;padding:0 20px;font-size:0.82rem;color:var(--text-muted);font-weight:500}
+
+/* GRID */
+.grid{max-width:1200px;margin:14px auto 40px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.product-card{background:var(--white);border-radius:var(--radius);padding:14px;border:1.5px solid var(--border);display:flex;flex-direction:column;gap:10px;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;position:relative;overflow:hidden}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),#5ec27e);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:transparent}
+.product-card:hover::before{transform:scaleX(1)}
+.category-tag{font-size:0.62rem;font-weight:700;color:var(--green);background:var(--green-light);padding:3px 9px;border-radius:12px;width:fit-content;text-transform:uppercase;letter-spacing:0.04em}
+.product-img-wrap{background:var(--cream);border-radius:10px;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-img-wrap img{width:85%;height:85%;object-fit:contain;transition:transform 0.3s}
+.product-card:hover .product-img-wrap img{transform:scale(1.07)}
+.product-name{font-weight:600;font-size:0.92rem;color:var(--text);line-height:1.35}
+.product-qty{font-size:0.78rem;color:var(--text-muted);font-weight:500}
+.price-row{display:flex;justify-content:space-between;align-items:center}
+.price-tag{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:var(--green)}
+.btn-group{display:grid;grid-template-columns:1fr 40px;gap:7px}
+.card-btn-primary{background:var(--green);color:white;border:none;padding:9px;border-radius:var(--radius-sm);font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;transition:all 0.2s}
+.card-btn-primary:hover{background:var(--green-mid);transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,122,60,0.3)}
+.card-btn-icon{background:var(--green-light);border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;color:var(--green);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s}
+.card-btn-icon:hover{background:var(--green);color:white;border-color:var(--green);transform:scale(1.05)}
+.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted)}
+.empty-state p:first-child{font-size:3rem;margin-bottom:12px}
+.skeleton{background:linear-gradient(90deg,var(--cream-dark) 25%,var(--cream) 50%,var(--cream-dark) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:10px}
+
+/* ── CART OVERLAY ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:2000;display:none;backdrop-filter:blur(3px)}
+.cart-overlay.show{display:block}
+
+/* ── CART PANEL ── */
+#cartPanel{
+  position:fixed;right:0;top:0;
+  width:420px;max-width:94vw;height:100%;
+  background:var(--white);
+  box-shadow:-8px 0 48px rgba(26,122,60,0.18);
+  display:flex;flex-direction:column;
+  z-index:2001;
+  transform:translateX(100%);
+  transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+#cartPanel.show{transform:translateX(0)}
+
+.cart-header{
+  padding:18px 20px 14px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.cart-header-left{display:flex;align-items:center;gap:10px}
+.cart-header h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
+.cart-item-count-pill{
+  background:var(--green);color:white;
+  font-size:0.72rem;font-weight:700;
+  padding:2px 9px;border-radius:20px;
+  font-family:'DM Sans',sans-serif;
+}
+.cart-close{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--text-muted);transition:all 0.2s}
+.cart-close:hover{background:#fee2e2;color:#ef4444;border-color:#fecaca}
+
+/* SCROLLABLE BODY */
+#cartItems{flex:1;overflow-y:auto;padding:10px 14px}
+#cartItems::-webkit-scrollbar{width:4px}
+#cartItems::-webkit-scrollbar-track{background:transparent}
+#cartItems::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ── CART ITEM WITH IMAGE ── */
+.cart-item{
+  display:flex;align-items:center;gap:13px;
+  padding:11px 10px;
+  border-radius:12px;
+  border:1.5px solid transparent;
+  margin-bottom:6px;
+  transition:background 0.15s, border-color 0.15s;
+}
+.cart-item:hover{background:var(--cream);border-color:var(--border)}
+
+.cart-item-img-wrap{
+  width:68px;height:68px;flex-shrink:0;
+  border-radius:10px;
+  background:var(--cream);
+  border:1.5px solid var(--border);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.cart-item-img-wrap img{
+  width:80%;height:80%;
+  object-fit:contain;
+  transition:transform 0.25s;
+}
+.cart-item:hover .cart-item-img-wrap img{transform:scale(1.08)}
+.img-fallback{font-size:2rem;line-height:1}
+
+.cart-item-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.cart-item-name{font-size:0.88rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-meta{font-size:0.75rem;color:var(--text-muted)}
+.cart-item-subtotal{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--green);margin-top:1px}
+
+.qty-controls{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.qty-btn{width:27px;height:27px;border-radius:7px;border:1.5px solid var(--border);background:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:var(--text);transition:all 0.15s}
+.qty-btn:hover{background:var(--green);color:white;border-color:var(--green)}
+.qty-btn.del:hover{background:#ef4444;border-color:#ef4444;color:white}
+.qty-num{font-size:0.9rem;font-weight:700;min-width:20px;text-align:center;color:var(--text)}
+
+/* FOOTER */
+.cart-footer{padding:14px 18px 22px;border-top:1.5px solid var(--border);flex-shrink:0;background:var(--cream)}
+.cart-summary-box{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:12px;display:flex;flex-direction:column;gap:9px}
+.summary-row{display:flex;justify-content:space-between;align-items:center;font-size:0.84rem;color:var(--text-muted)}
+.summary-row.divider{border-top:1px dashed var(--border);padding-top:9px}
+.summary-row.total{color:var(--text);font-weight:700;font-size:0.95rem}
+.summary-total-val{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;color:var(--green)}
+.delivery-free{color:var(--green);font-weight:600;font-size:0.8rem}
+.checkout-btn{width:100%;padding:14px;background:var(--green);color:white;border:none;border-radius:var(--radius-sm);font-weight:700;font-family:'DM Sans',sans-serif;font-size:1rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(26,122,60,0.28)}
+.checkout-btn:hover{background:var(--green-mid);transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,122,60,0.35)}
+.cart-empty{text-align:center;padding:52px 20px;color:var(--text-muted)}
+.cart-empty-icon{font-size:3rem;margin-bottom:12px;opacity:0.55}
+.cart-empty p{font-size:0.93rem;line-height:1.6}
+.cart-empty small{font-size:0.78rem;opacity:0.65;margin-top:4px;display:block}
+
+/* AUTH MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;justify-content:center;align-items:center;z-index:3000;backdrop-filter:blur(6px);padding:16px}
+.modal-overlay.show{display:flex}
+.auth-modal{background:var(--white);padding:32px;border-radius:var(--radius-xl);width:100%;max-width:420px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.2);animation:modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all 0.2s}
+.modal-close:hover{background:#fee2e2;color:#ef4444}
+.auth-modal h2{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.auth-modal .sub{font-size:0.85rem;color:var(--text-muted);margin-bottom:24px}
+.auth-form{display:flex;flex-direction:column;gap:12px}
+.field-label{display:block;font-size:0.8rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;letter-spacing:0.02em}
+.auth-form input{width:100%;padding:12px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--text);background:var(--cream);transition:all 0.2s}
+.auth-form input:focus{outline:none;border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px var(--green-glow)}
+.btn-submit{background:var(--green);color:white;border:none;padding:13px;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;margin-top:4px;transition:all 0.2s;width:100%}
+.btn-submit:hover{background:var(--green-mid);box-shadow:0 6px 20px rgba(26,122,60,0.3);transform:translateY(-1px)}
+.auth-link{font-size:0.85rem;color:var(--green);cursor:pointer;text-align:center;margin-top:14px;font-weight:500;transition:color 0.2s}
+.auth-link:hover{color:var(--green-mid);text-decoration:underline}
+.user-menu{position:relative}
+.dropdown-content{display:none;position:absolute;right:0;top:calc(100% + 8px);background:var(--white);min-width:200px;box-shadow:var(--shadow-lg);border-radius:var(--radius);padding:14px;z-index:1001;border:1px solid var(--border);animation:dropIn 0.2s ease}
+@keyframes dropIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.user-menu:hover .dropdown-content,.user-menu:focus-within .dropdown-content{display:block}
+.user-name{font-weight:700;font-size:0.95rem;color:var(--text)}
+.user-mobile{font-size:0.78rem;color:var(--text-muted);margin-top:2px}
+.dropdown-divider{border:none;border-top:1px solid var(--border);margin:10px 0}
+.logout-btn{color:#ef4444;border:1.5px solid #fecaca;background:#fff5f5;width:100%;padding:8px;border-radius:8px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;transition:all 0.2s}
+.logout-btn:hover{background:#fee2e2;border-color:#ef4444}
+.toast-container{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:center}
+.toast{background:var(--text);color:white;padding:12px 20px;border-radius:50px;font-size:0.88rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.2);display:flex;align-items:center;gap:8px;animation:toastIn 0.3s cubic-bezier(0.34,1.56,0.64,1);pointer-events:auto;white-space:nowrap}
+.toast.success{background:var(--green)}
+.toast.error{background:#ef4444}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px) scale(0.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-10px) scale(0.9)}}
+footer{background:var(--text);color:rgba(255,255,255,0.75);padding:52px 5% 32px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand p{font-size:0.9rem;line-height:1.7;max-width:280px;margin-top:8px}
+.footer-col h4{color:white;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px}
+.footer-col ul{list-style:none}
+.footer-col ul li,.footer-col p{font-size:0.87rem;line-height:1.6;margin-bottom:7px;display:flex;align-items:flex-start;gap:6px}
+.footer-logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:white;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:0.8rem;color:rgba(255,255,255,0.4)}
+@media(max-width:768px){.hero{flex-direction:column;text-align:center;padding:36px 5%}.hero-emoji{font-size:4rem}.hero p{max-width:100%}.footer-top{grid-template-columns:1fr;gap:24px}.grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}header{padding:0 4%}.logo-text span:first-child{font-size:1rem}#cartPanel{width:100%;max-width:100%}}
+@media(max-width:480px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.filter-bar{flex-wrap:wrap}#sort{width:100%}.categories-bar{gap:6px}.logo-text{display:none}}
+</style>
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<header>
+  <a class="logo" href="#">
+    <div class="logo-icon">🕊️</div>
+    <div class="logo-text">
+      <span>Messiah Vijaya Dairy</span>
+      <span>Fresh · Pure · Trusted</span>
+    </div>
+  </a>
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="icon-btn" onclick="toggleCart()" title="Cart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span id="cart-count" class="cart-badge">0</span>
+    </button>
+    <div id="authArea">
+      <button class="btn-primary" onclick="openAuth()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Sign In
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">🥛 Authorized Vijaya Dairy Outlet</div>
+    <h1>Freshness <em>Delivered</em><br>to Your Door</h1>
+    <p>Premium dairy products from trusted sources — pure, hygienic, and delivered daily right to your home.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">✅ Free delivery within 5 km</span>
+      <span class="hero-pill">📦 Bulk orders welcome</span>
+      <span class="hero-pill">⏱ Daily fresh stock</span>
+    </div>
+  </div>
+  <div class="hero-emoji">🥛</div>
+</section>
+
+<div class="categories-bar" id="categoriesBar">
+  <button class="cat-pill active" data-cat="all" onclick="filterByCategory(this)">All Products</button>
+</div>
+
+<div class="filter-bar">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="search" type="text" placeholder="Search dairy products…" autocomplete="off">
+  </div>
+  <select id="sort" onchange="applyFilters()">
+    <option value="">Sort by…</option>
+    <option value="priceAsc">Price ↑</option>
+    <option value="priceDesc">Price ↓</option>
+    <option value="nameAsc">Name A–Z</option>
+  </select>
+</div>
+<div class="results-label" id="resultsLabel"></div>
+
+<div class="grid" id="products-container"></div>
+
+<!-- CART PANEL -->
+<div id="cartPanel">
+  <div class="cart-header">
+    <div class="cart-header-left">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Your Cart
+      </h3>
+      <span class="cart-item-count-pill" id="cartHeaderCount">0 items</span>
+    </div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-summary-box">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>₹<span id="cartSubtotal">0</span></span>
+      </div>
+      <div class="summary-row">
+        <span>Delivery</span>
+        <span class="delivery-free">FREE within 5 km</span>
+      </div>
+      <div class="summary-row divider total">
+        <span>Total</span>
+        <span class="summary-total-val">₹<span id="cartTotal">0</span></span>
+      </div>
+    </div>
+    <button class="checkout-btn" onclick="handleCheckout()">
+      Proceed to Checkout
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay" onclick="handleModalBgClick(event)">
+  <div class="auth-modal">
+    <button class="modal-close" onclick="closeAuth()">✕</button>
+    <div id="loginSection">
+      <h2>Welcome back 👋</h2><p class="sub">Sign in to your account</p>
+      <div class="auth-form">
+        <div><label class="field-label">Email address</label><input type="email" id="loginEmail" placeholder="you@email.com" autocomplete="email"></div>
+        <div><label class="field-label">Password</label><input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"></div>
+        <button class="btn-submit" onclick="handleLogin()">Sign In</button>
+      </div>
+      <p class="auth-link" onclick="switchAuth('register')">Don't have an account? <strong>Register</strong></p>
+      <p class="auth-link" onclick="switchAuth('forgot')">Forgot password?</p>
+    </div>
+    <div id="registerSection" style="display:none">
+      <h2>Create account</h2><p class="sub">Join Messiah Vijaya Dairy</p>
+      <div class="auth-form">
+        <div><label class="field-label">Email address</label><input type="email" id="regEmail" placeholder="you@email.com" autocomplete="email"></div>
+        <div><label class="field-label">Password</label><input type="password" id="regPass" placeholder="••••••••" autocomplete="new-password"></div>
+        <div><label class="field-label">Confirm Password</label><input type="password" id="regConfirm" placeholder="••••••••" autocomplete="new-password"></div>
+        <div><label class="field-label">Mobile Number</label><input type="tel" id="regMobile" placeholder="+91 XXXXX XXXXX" autocomplete="tel"></div>
+        <button class="btn-submit" onclick="handleRegister()">Send OTP</button>
+      </div>
+      <p class="auth-link" onclick="switchAuth('login')">← Back to Login</p>
+    </div>
+    <div id="otpSection" style="display:none">
+      <h2>Verify OTP 🔐</h2><p class="sub">Enter the OTP sent to your mobile</p>
+      <div class="auth-form">
+        <div><label class="field-label">OTP Code</label><input type="text" id="otpValue" placeholder="Enter 6-digit OTP" maxlength="6" autocomplete="one-time-code"></div>
+        <button class="btn-submit" onclick="handleVerifyOtp()">Verify & Register</button>
+      </div>
+      <p class="auth-link" onclick="switchAuth('register')">← Back to Register</p>
+    </div>
+    <div id="forgotSection" style="display:none">
+      <h2>Reset password 🔑</h2><p class="sub">We'll send an OTP to your email</p>
+      <div class="auth-form">
+        <div><label class="field-label">Registered Email</label><input type="email" id="forgotEmail" placeholder="you@email.com" autocomplete="email"></div>
+        <button class="btn-submit" onclick="handleForgot()">Send Reset OTP</button>
+        <div id="resetFields" style="display:none;flex-direction:column;gap:12px">
+          <div><label class="field-label">OTP Code</label><input type="text" id="resetOtp" placeholder="6-digit OTP" maxlength="6"></div>
+          <div><label class="field-label">New Password</label><input type="password" id="newPass" placeholder="New password"></div>
+          <div><label class="field-label">Confirm Password</label><input type="password" id="newPassConfirm" placeholder="Confirm new password"></div>
+          <button class="btn-submit" onclick="handleReset()">Update Password</button>
+        </div>
+      </div>
+      <p class="auth-link" onclick="switchAuth('login')">← Back to Login</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">🕊️ Messiah Vijaya Dairy</div>
+      <p>An authorized Vijaya Dairy outlet established in 2024 by Mr. Pulagoru Uday Bhaskhar. Delivering freshness, purity, and reliability to every household we serve.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 +91 6304773400</p>
+      <p>📧 mesiahdairy@gmail.com</p>
+      <p>📍 Kotha Majeru</p>
+    </div>
+    <div class="footer-col">
+      <h4>Delivery</h4>
+      <ul>
+        <li>✅ Free within 5 km</li>
+        <li>🚚 Charges beyond 5 km</li>
+        <li>📦 Bulk orders for events</li>
+        <li>⏱ Daily fresh delivery</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Messiah Vijaya Dairy · All rights reserved</span>
+    <span>Freshness you can trust 🥛</span>
+  </div>
+</footer>
+
+<style id="darkStyles"></style>
+<script>
+let allProducts = [];
+let activeCategory = 'all';
+let currentUser = null;
+
+const API_BASE = 'http://localhost:8080/users';
+const CART_API = 'http://localhost:8080/cart';
+const PROD_API = 'http://localhost:8080/products';
+
+window.onload = () => {
+  try { currentUser = JSON.parse(localStorage.getItem('user')) || null; } catch { currentUser = null; }
+  updateAuthUI();
+  loadProducts();
+  loadCart();
+  applyStoredTheme();
+  document.getElementById('search').addEventListener('input', applyFilters);
+};
+
+/* THEME */
+let isDark = false;
+function applyStoredTheme() {
+  isDark = localStorage.getItem('theme') === 'dark';
+  if (isDark) applyDarkStyles();
+}
+function applyDarkStyles() {
+  document.getElementById('darkStyles').textContent = `
+    :root{--cream:#0f1810;--cream-dark:#172217;--white:#1a2b1e;--border:#2d4533;--text:#e8f5ed;--text-mid:#b0d4bc;--text-muted:#7a9e83;--green-light:#162a1e}
+    body{background:#0f1810}header{background:rgba(15,24,16,0.95)}
+    .auth-modal,.dropdown-content{background:#1a2b1e}.auth-form input{background:#0f1810;color:#e8f5ed}
+    footer{background:#080e09}#cartPanel{background:#1a2b1e}.cart-footer{background:#0f1810}
+    .cart-item:hover{background:#172217}.cart-item-img-wrap{background:#172217;border-color:#2d4533}
+    .cart-summary-box{background:#0f1810;border-color:#2d4533}
+    .skeleton{background:linear-gradient(90deg,#172217 25%,#1e2e20 50%,#172217 75%);background-size:200% 100%}
+  `;
+}
+function toggleTheme() {
+  isDark = !isDark;
+  isDark ? (applyDarkStyles(), localStorage.setItem('theme','dark')) : (document.getElementById('darkStyles').textContent='', localStorage.setItem('theme','light'));
+}
+
+/* TOAST */
+function showToast(msg, type = 'success') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = (type==='success'?'✅':type==='error'?'❌':'ℹ️') + ' ' + msg;
+  c.appendChild(t);
+  setTimeout(() => { t.style.animation = 'toastOut 0.3s ease forwards'; setTimeout(() => t.remove(), 300); }, 2800);
+}
+
+/* PRODUCTS */
+async function loadProducts() {
+  showSkeletons();
+  try {
+    const res = await fetch(`${PROD_API}/all`);
+    if (!res.ok) throw 0;
+    const json = await res.json();
+    allProducts = json.data || [];
+    buildCategories();
+    renderProducts(allProducts);
+  } catch {
+    document.getElementById('products-container').innerHTML = `<div class="empty-state"><p>⚠️</p><p>Could not connect to server (localhost:8080).</p></div>`;
+  }
+}
+function showSkeletons() {
+  document.getElementById('products-container').innerHTML = Array(8).fill(0).map(()=>`
+    <div class="skeleton-card">
+      <div class="skeleton" style="height:12px;width:55px"></div>
+      <div class="skeleton" style="height:110px;border-radius:10px"></div>
+      <div class="skeleton" style="height:13px;width:80%"></div>
+      <div class="skeleton" style="height:11px;width:50%"></div>
+      <div class="skeleton" style="height:34px;margin-top:4px"></div>
+    </div>`).join('');
+}
+function buildCategories() {
+  const cats = [...new Set(allProducts.map(p=>p.category).filter(Boolean))];
+  const bar = document.getElementById('categoriesBar');
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-pill'; btn.dataset.cat = cat;
+    btn.textContent = formatCategory(cat);
+    btn.onclick = function(){ filterByCategory(this); };
+    bar.appendChild(btn);
+  });
+}
+function filterByCategory(btn) {
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active'); activeCategory = btn.dataset.cat; applyFilters();
+}
+function applyFilters() {
+  const q = (document.getElementById('search').value||'').toLowerCase().trim();
+  const sort = document.getElementById('sort').value;
+  let data = [...allProducts];
+  if (activeCategory !== 'all') data = data.filter(p=>p.category===activeCategory);
+  if (q) data = data.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.category||'').toLowerCase().includes(q));
+  if (sort==='priceAsc')  data.sort((a,b)=>a.price-b.price);
+  if (sort==='priceDesc') data.sort((a,b)=>b.price-a.price);
+  if (sort==='nameAsc')   data.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
+  renderProducts(data);
+}
+function formatCategory(cat){ return (cat||'').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+function renderProducts(products) {
+  const c = document.getElementById('products-container');
+  document.getElementById('resultsLabel').textContent = `Showing ${products.length} product${products.length!==1?'s':''}`;
+  if (!products.length) { c.innerHTML=`<div class="empty-state"><p>🔍</p><p>No products found.</p></div>`; return; }
+  c.innerHTML = '';
+  products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    const safeName = (p.name||'Product').replace(/'/g,"\\'");
+    card.innerHTML = `
+      <div class="category-tag">${formatCategory(p.category)}</div>
+      <div class="product-img-wrap">
+        <img src="${p.imageurl||''}" alt="${p.name||'Product'}" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=&quot;font-size:2.5rem&quot;>🥛</span>'">
+      </div>
+      <div class="product-name">${p.name||'Unknown Product'}</div>
+      <div class="product-qty">${p.quantity||''}</div>
+      <div class="price-row"><span class="price-tag">₹${p.price||0}</span></div>
+      <div class="btn-group">
+        <button class="card-btn-primary" onclick="buyNow('${safeName}',${p.price||0})">Buy Now</button>
+        <button class="card-btn-icon" onclick="addToCart(${p.pid})" title="Add to cart">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+      </div>`;
+    c.appendChild(card);
+  });
+}
+
+/* AUTH UI */
+function updateAuthUI() {
+  const area = document.getElementById('authArea');
+  if (currentUser) {
+    area.innerHTML = `<div class="user-menu"><button class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      ${currentUser.name||'Account'}
+    </button>
+    <div class="dropdown-content">
+      <div class="user-name">${currentUser.name||'User'}</div>
+      <div class="user-mobile">${currentUser.mobile||currentUser.email||''}</div>
+      <hr class="dropdown-divider">
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div></div>`;
+  } else {
+    area.innerHTML = `<button class="btn-primary" onclick="openAuth()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Sign In</button>`;
+  }
+}
+function openAuth(){ document.getElementById('authModal').classList.add('show'); switchAuth('login'); }
+function closeAuth(){ document.getElementById('authModal').classList.remove('show'); }
+function handleModalBgClick(e){ if(e.target===document.getElementById('authModal')) closeAuth(); }
+function switchAuth(s){ ['login','register','otp','forgot'].forEach(x=>{ document.getElementById(x+'Section').style.display=x===s?'block':'none'; }); }
+
+async function handleLogin() {
+  const email=(document.getElementById('loginEmail').value||'').trim(), password=document.getElementById('loginPass').value||'';
+  if(!email||!password){showToast('Please fill in all fields','error');return;}
+  try {
+    const res=await fetch(`${API_BASE}/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+    const data=await res.json();
+    if(res.ok){
+      localStorage.setItem('token',data.token);
+      try{ const uRes=await fetch(`${API_BASE}/me`,{headers:{'Authorization':'Bearer '+data.token}}); const uData=await uRes.json(); currentUser={email,name:uData.name||email.split('@')[0],mobile:uData.mobile||''}; }
+      catch{ currentUser={email,name:email.split('@')[0],mobile:''}; }
+      localStorage.setItem('user',JSON.stringify(currentUser)); closeAuth(); updateAuthUI(); loadCart(); showToast('Welcome back, '+(currentUser.name||'User')+'!');
+    } else showToast(data.message||'Login failed','error');
+  } catch { showToast('Server unreachable.','error'); }
+}
+async function handleRegister() {
+  const email=(document.getElementById('regEmail').value||'').trim(),password=document.getElementById('regPass').value||'',confirmpassword=document.getElementById('regConfirm').value||'',mobilenumber=(document.getElementById('regMobile').value||'').trim();
+  if(!email||!password||!confirmpassword||!mobilenumber){showToast('Please fill in all fields','error');return;}
+  if(password!==confirmpassword){showToast('Passwords do not match','error');return;}
+  try{ const res=await fetch(`${API_BASE}/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password,confirmpassword,mobilenumber})}); const data=await res.json(); if(res.ok){switchAuth('otp');showToast('OTP sent!');}else showToast(data.message||'Failed','error'); }
+  catch{ showToast('Server unreachable.','error'); }
+}
+async function handleVerifyOtp() {
+  const otp=(document.getElementById('otpValue').value||'').trim(); if(!otp){showToast('Enter OTP','error');return;}
+  try{ const res=await fetch(`${API_BASE}/verifyotp?otp=${encodeURIComponent(otp)}`,{method:'POST'}); const data=await res.json(); if(res.ok){showToast('Account created! Please log in.');switchAuth('login');}else showToast(data.message||'Invalid OTP','error'); }
+  catch{ showToast('Server unreachable.','error'); }
+}
+async function handleForgot() {
+  const email=(document.getElementById('forgotEmail').value||'').trim(); if(!email){showToast('Enter email','error');return;}
+  try{ const res=await fetch(`${API_BASE}/forgotpassword?email=${encodeURIComponent(email)}`,{method:'POST'}); if(res.ok){document.getElementById('resetFields').style.display='flex';showToast('OTP sent!');}else showToast('Email not found','error'); }
+  catch{ showToast('Server unreachable.','error'); }
+}
+async function handleReset() {
+  const otp=(document.getElementById('resetOtp').value||'').trim(),password=document.getElementById('newPass').value||'',confirmpassword=document.getElementById('newPassConfirm').value||'';
+  if(!otp||!password||!confirmpassword){showToast('Fill all fields','error');return;} if(password!==confirmpassword){showToast('Passwords do not match','error');return;}
+  try{ const res=await fetch(`${API_BASE}/resetpassword?otp=${encodeURIComponent(otp)}&password=${encodeURIComponent(password)}&confirmpassword=${encodeURIComponent(confirmpassword)}`,{method:'POST'}); if(res.ok){showToast('Password updated!');switchAuth('login');}else showToast('Reset failed','error'); }
+  catch{ showToast('Server unreachable.','error'); }
+}
+function logout(){ localStorage.removeItem('user'); localStorage.removeItem('token'); currentUser=null; updateAuthUI(); updateCartBadge(0); showToast('Signed out'); }
+
+/* CART */
+function toggleCart() {
+  const panel=document.getElementById('cartPanel'), overlay=document.getElementById('cartOverlay'), open=panel.classList.contains('show');
+  if(open){ panel.classList.remove('show'); overlay.classList.remove('show'); }
+  else { panel.classList.add('show'); overlay.classList.add('show'); loadCartDetails(); }
+}
+async function loadCart() {
+  const token=localStorage.getItem('token'); if(!token) return;
+  try{ const res=await fetch(`${CART_API}/mycart`,{headers:{'Authorization':'Bearer '+token}}); const data=await res.json(); if(res.ok&&data.cart) updateCartBadge(data.cart.items?data.cart.items.length:0); }catch{}
+}
+function updateCartBadge(count) {
+  const b=document.getElementById('cart-count');
+  if(b){ b.textContent=count>99?'99+':count; b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); }
+  const hb=document.getElementById('cartHeaderCount');
+  if(hb) hb.textContent = count + (count===1?' item':' items');
+}
+async function addToCart(productId) {
+  const token=localStorage.getItem('token'); if(!token){showToast('Please sign in first','error');openAuth();return;}
+  try{ const res=await fetch(`${CART_API}/addtocart?productid=${productId}&quantity=1`,{method:'POST',headers:{'Authorization':'Bearer '+token}}); const data=await res.json(); if(res.ok){updateCartBadge(data.cart?.items?.length||0);showToast('Added to cart!');}else showToast(data.message||'Could not add','error'); }
+  catch{ showToast('Server unreachable.','error'); }
+}
+
+async function loadCartDetails() {
+  const token=localStorage.getItem('token');
+  const items=document.getElementById('cartItems');
+  const footer=document.getElementById('cartFooter');
+
+  if(!token){
+    items.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">🔒</div><p>Sign in to view your cart</p><small>Items save automatically</small></div>`;
+    footer.style.display='none'; return;
+  }
+
+  items.innerHTML=`<div style="padding:28px;text-align:center;color:var(--text-muted);font-size:0.9rem"><div style="font-size:1.6rem;margin-bottom:8px">⏳</div>Loading…</div>`;
+
+  try{
+    const res=await fetch(`${CART_API}/mycart`,{headers:{'Authorization':'Bearer '+token}});
+    const data=await res.json();
+
+    if(!res.ok||!data.cart?.items?.length){
+      items.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>Your cart is empty</p><small>Add some fresh dairy products!</small></div>`;
+      footer.style.display='none'; return;
+    }
+
+    items.innerHTML='';
+
+    data.cart.items.forEach(item=>{
+      const product=item.product||{};
+      const name=product.name||'Product';
+      const price=product.price||0;
+      const qty=item.quantity||1;
+      const imgUrl=product.imageurl||'';
+      const pid=product.pid;
+      const subtotal=(price*qty).toFixed(2);
+
+      const div=document.createElement('div');
+      div.className='cart-item';
+
+      // Image with fallback
+      const imgSection = imgUrl
+        ? `<div class="cart-item-img-wrap">
+             <img src="${imgUrl}" alt="${name}"
+               onerror="this.parentElement.innerHTML='<span class=\\'img-fallback\\'>🥛</span>'">
+           </div>`
+        : `<div class="cart-item-img-wrap"><span class="img-fallback">🥛</span></div>`;
+
+      div.innerHTML=`
+        ${imgSection}
+        <div class="cart-item-body">
+          <div class="cart-item-name" title="${name}">${name}</div>
+          <div class="cart-item-meta">₹${price} per unit</div>
+          <div class="cart-item-subtotal">₹${subtotal}</div>
+        </div>
+        <div class="qty-controls">
+          <button class="qty-btn del" onclick="removeItem(${pid})" title="Remove item">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          </button>
+          <button class="qty-btn" onclick="decreaseItem(${pid})">−</button>
+          <span class="qty-num">${qty}</span>
+          <button class="qty-btn" onclick="increaseItem(${pid})">+</button>
+        </div>`;
+      items.appendChild(div);
+    });
+
+    const total=data.cart.carttotal??0;
+    document.getElementById('cartSubtotal').textContent=total;
+    document.getElementById('cartTotal').textContent=total;
+    footer.style.display='block';
+    updateCartBadge(data.cart.items.length);
+
+  }catch{
+    items.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">⚠️</div><p>Could not load cart</p><small>Check your connection</small></div>`;
+    footer.style.display='none';
+  }
+}
+
+async function cartAction(url){
+  const token=localStorage.getItem('token'); if(!token) return;
+  try{ await fetch(url,{method:'POST',headers:{'Authorization':'Bearer '+token}}); loadCartDetails(); loadCart(); }catch{}
+}
+function increaseItem(pid){ cartAction(`${CART_API}/increase?productid=${pid}`); }
+function decreaseItem(pid){ cartAction(`${CART_API}/decrease?productid=${pid}`); }
+function removeItem(pid)  { cartAction(`${CART_API}/removeproduct?productid=${pid}`); }
+
+function handleCheckout(){ if(!currentUser){showToast('Please sign in first','error');openAuth();return;} showToast('Redirecting to checkout…'); }
+function buyNow(name,price){ if(!currentUser){showToast('Please sign in to purchase','error');openAuth();return;} showToast(`Redirecting to payment for ${name} (₹${price})…`); }
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ closeAuth(); const p=document.getElementById('cartPanel'); if(p.classList.contains('show')) toggleCart(); }
+});
+</script>
+</body>
+</html>
