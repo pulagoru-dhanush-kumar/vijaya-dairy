@@ -1,20 +1,16 @@
-<div align="center">
+# 🥛 Vijaya Dairy
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=gradient&customColorList=12,20,30&height=250&section=header&text=🥛%20Vijaya%20Dairy&fontSize=60&fontColor=fff&fontAlignY=45&desc=Production-Ready%20Dairy%20E-Commerce%20Platform&descSize=18&descColor=c9d1d9&descAlignY=65" />
+### Production-Ready Dairy E-Commerce Platform
 
-<p>
-<img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
-<img src="https://img.shields.io/badge/Spring%20Boot-3.2.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
-<img src="https://img.shields.io/badge/MySQL-8.4-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-<img src="https://img.shields.io/badge/AWS-EC2%20%2B%20RDS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
-<img src="https://img.shields.io/badge/Razorpay-Payment%20Gateway-02042B?style=for-the-badge&logo=razorpay&logoColor=white" />
-</p>
+![Java](https://img.shields.io/badge/Java-17-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.5-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-EC2%20%2B%20RDS-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
+![Razorpay](https://img.shields.io/badge/Razorpay-Payment%20Gateway-02042B?style=flat-square&logo=razorpay&logoColor=white)
 
-<p>
-<img src="https://img.shields.io/badge/Status-Live%20on%20AWS-brightgreen?style=flat-square" />
-<img src="https://img.shields.io/badge/Environments-3%20(Local%20%7C%20Staging%20%7C%20Production)-blue?style=flat-square" />
-<img src="https://img.shields.io/badge/API%20Endpoints-25%2B-purple?style=flat-square" />
-</p>
+![Status](https://img.shields.io/badge/Status-Live%20on%20AWS-brightgreen?style=flat-square)
+![Environments](https://img.shields.io/badge/Environments-3%20(Local%20|%20Staging%20|%20Production)-blue?style=flat-square)
+![Endpoints](https://img.shields.io/badge/API%20Endpoints-25%2B-purple?style=flat-square)
 
 **[🌐 Live Demo](https://tinyurl.com/messiah-vijaya-dairy-pulagoru) · [🛡️ Admin Panel](https://tinyurl.com/messiah-vijaya-dairy-pulagoru/adminpanel.html) · [📁 Source Code](https://github.com/pulagoru-dhanush-kumar/vijaya-dairy)**
 
@@ -597,7 +593,6 @@ String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
 | Environment | URL | Branch | Database |
 |---|---|---|---|
-| 📱 **Local** | `http://localhost:8080` | `develop` | `vijayadairy_local` |
 | 🧪 **Staging** | `http://3.107.228.182:8081` | `staging` | `vijayadairy_staging` |
 | 🚀 **Production** | `http://32.236.15.39:8080` | `main` | `vijayadairy` (RDS) |
 
