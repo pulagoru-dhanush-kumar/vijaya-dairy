@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.uday.vijayadairy.model.Order;
 import com.uday.vijayadairy.model.Product;
 import com.uday.vijayadairy.model.ProductStatus;
 import com.uday.vijayadairy.service.Adminservice;
@@ -15,7 +16,7 @@ import com.uday.vijayadairy.service.Adminservice;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/admin/products")
+@RequestMapping("/admin")
 public class Admincontroller {
 
     @Autowired
@@ -23,7 +24,7 @@ public class Admincontroller {
 
     // ── GET ALL PRODUCTS ─────────────────────────────────────────────────────
     // GET /admin/products
-    @GetMapping
+    @GetMapping("/products")
     public ResponseEntity<?> getAllProducts() {
         try {
             List<Product> products = adminservice.getAllProducts();
@@ -40,7 +41,7 @@ public class Admincontroller {
 
     // ── GET PRODUCT BY ID ────────────────────────────────────────────────────
     // GET /admin/products/{pid}
-    @GetMapping("/{pid}")
+    @GetMapping("/products/{pid}")
     public ResponseEntity<?> getProductById(@PathVariable Long pid) {
         try {
             Product product = adminservice.getProductById(pid);
@@ -53,7 +54,7 @@ public class Admincontroller {
 
     // ── GET PRODUCTS BY STATUS ───────────────────────────────────────────────
     // GET /admin/products/status/ACTIVE
-    @GetMapping("/status/{status}")
+    @GetMapping("/products/status/{status}")
     public ResponseEntity<?> getByStatus(@PathVariable String status) {
         try {
             ProductStatus ps = ProductStatus.valueOf(status.toUpperCase());
@@ -71,7 +72,7 @@ public class Admincontroller {
 
     // ── ADD PRODUCT ──────────────────────────────────────────────────────────
     // POST /admin/products
-    @PostMapping
+    @PostMapping("/products")
     public ResponseEntity<?> addProduct(@Valid @RequestBody Product product) {
         try {
             Product saved = adminservice.addProduct(product);
@@ -85,7 +86,7 @@ public class Admincontroller {
 
     // ── UPDATE PRODUCT ───────────────────────────────────────────────────────
     // PUT /admin/products/{pid}
-    @PutMapping("/{pid}")
+    @PutMapping("/products/{pid}")
     public ResponseEntity<?> updateProduct(@PathVariable Long pid,
                                            @RequestBody Product product) {
         try {
@@ -103,7 +104,7 @@ public class Admincontroller {
 
     // ── PATCH STATUS (publish / unpublish / draft) ───────────────────────────
     // PATCH /admin/products/{pid}/status?value=ACTIVE
-    @PatchMapping("/{pid}/status")
+    @PatchMapping("/products/{pid}/status")
     public ResponseEntity<?> updateStatus(@PathVariable Long pid,
                                           @RequestParam String value) {
         try {
@@ -125,11 +126,72 @@ public class Admincontroller {
 
     // ── DELETE PRODUCT ───────────────────────────────────────────────────────
     // DELETE /admin/products/{pid}
-    @DeleteMapping("/{pid}")
+    @DeleteMapping("/products/{pid}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long pid) {
         try {
             String message = adminservice.deleteProduct(pid);
             return ResponseEntity.ok(Map.of("success", true, "message", message));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  ORDER MANAGEMENT ENDPOINTS (NEW — for admin panel)
+    // ════════════════════════════════════════════════════════════════════════
+
+    /**
+     * GET /admin/orders/all
+     * Returns every order in the system (all users, all statuses).
+     * Sorted newest-first.
+     */
+    @GetMapping("/orders/all")
+    public ResponseEntity<?> getAllOrders() {
+        try {
+            List<Order> orders = adminservice.getAllOrders();
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "count", orders.size(),
+                    "data", orders
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /admin/orders/status/{status}
+     * Returns all orders with a specific OrderStatus (e.g. PENDING, SUCCESS).
+     */
+    @GetMapping("/orders/status/{status}")
+    public ResponseEntity<?> getOrdersByStatus(@PathVariable String status) {
+        try {
+            List<Order> orders = adminservice.getOrdersByStatus(status.toUpperCase());
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "count", orders.size(),
+                    "data", orders
+            ));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("success", false, "message", "Invalid status: " + status));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /admin/orders/{id}
+     * Returns a single order by its primary key.
+     */
+    @GetMapping("/orders/{id}")
+    public ResponseEntity<?> getOrderById(@PathVariable Long id) {
+        try {
+            Order order = adminservice.getOrderById(id);
+            return ResponseEntity.ok(Map.of("success", true, "data", order));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(Map.of("success", false, "message", e.getMessage()));

@@ -42,7 +42,7 @@ public class SecurityConfig {
 	                            "/users/resetpassword"
 	                           ,"/products/all"
 	                            ,"/products.html"
-	                            ,"index.html","adminpanel.html"
+	                            ,"index.html","adminpanel.html","checkout.html"
 	                    ).permitAll()
 
 	                    .anyRequest().authenticated()

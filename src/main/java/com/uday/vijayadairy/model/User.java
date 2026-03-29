@@ -52,6 +52,7 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime  updated_at;
 	@OneToMany(mappedBy = "user")
+	@JsonManagedReference
 	private List<Order> orders;	
 	@NotBlank(message = "please enter your mobile number")
 	@Length(min=10,max=10,
@@ -61,6 +62,7 @@ public class User {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private Cart cart;
+	
 	
 }
 
