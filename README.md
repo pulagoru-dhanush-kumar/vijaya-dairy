@@ -15,8 +15,8 @@
 **[🌐 Live Demo](https://tinyurl.com/messiah-vijaya-dairy-pulagoru) · [🛡️ Admin Panel](http://3.107.228.182:8081/adminpanel.html) · [📁 Source Code](https://github.com/pulagoru-dhanush-kumar/vijaya-dairy)**
 
 </div>
-Note: Use the staging branch to run and test this project locally.
----
+Note:** Use the staging branch to run and test this project locally.**
+
 
 ## 📋 Table of Contents
 
