@@ -16,7 +16,7 @@
 🛡️ Admin Panel: http://52.65.161.192:8081/adminpanel.html  
 📁 Source Code: https://github.com/pulagoru-dhanush-kumar/vijaya-dairy
 </div>
-**Note:** Use the **staging** branch to run and test the project locally. The live demo and admin panel are currently unavailable because the AWS resources were stopped to avoid additional costs.
+Note: Use the staging branch to run and test the project locally. The live demo and admin panel are currently unavailable because the AWS resources were stopped to avoid additional costs.
 
 
 
